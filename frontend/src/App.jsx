@@ -11,12 +11,16 @@ function App() {
   const [position, setPosition] = useState("")
   const [status, setStatus] = useState("applied")
 
-  function handleSubmit(event){
-    event.preventDefault()
+  function handleSubmit(submitEvent){
+    submitEvent.preventDefault()
     const id = Date.now()
     const applicationObj = {id, company, position, status}
     setApplications([...applications, applicationObj])
     setCompany(""), setPosition(""), setStatus("applied")
+  }
+
+  function handleDelete(id){
+    setApplications(applications.filter( a => a.id !== id))
   }
 
   return(
@@ -39,7 +43,8 @@ function App() {
     <br/><br/>
     <button type ="submit" >Hinzufügen</button>
     </form>
-  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {application.status} </li>)}</ul>
+  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {application.status}
+    <button onClick={() => handleDelete(application.id)}>Löschen</button> </li>)}</ul>
   </div>
 )
 }
