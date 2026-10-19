@@ -3,15 +3,43 @@ import {useState} from 'react'
 
 function App() {
   const [applications, setApplications] = useState([ 
-  {id: 1, company: "Apple", position: "Vollzeit", status:"beworben"},
+  {id: 1, company: "Apple", position: "Vollzeit", status:"applied"},
   {id: 2, company: "BMW", position: "Teilzeit", status:"interview"},
-  {id: 3, company: "Microsoft", position: "Werkstudent", status:"abgelehnt"}
+  {id: 3, company: "Microsoft", position: "Werkstudent", status:"rejected"}
   ])
+  const [company, setCompany] = useState("")
+  const [position, setPosition] = useState("")
+  const [status, setStatus] = useState("applied")
+
+  function handleSubmit(event){
+    event.preventDefault()
+    console.log(company)
+    console.log(position)
+    console.log(status)
+    
+  }
+
   return(
   <div>
   <h1>Internship Application Tracker</h1>
-  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {application.status} </li>)}
-  </ul>
+  <form onSubmit={handleSubmit}>
+    <label htmlFor="company">Firma </label>
+    <input type="text" id="company" required value={company} onChange = {event => setCompany(event.target.value)} />
+    <br/><br/>
+    <label htmlFor="position">Stelle </label>
+    <input type="text" id="position" required value={position} onChange = {event => setPosition(event.target.value)}/>
+    <br/><br/>
+    <label htmlFor="status">Status </label>
+    <select id="status" value={status} onChange = {event => setStatus(event.target.value)}>
+    <option value="applied">Beworben</option>
+    <option value="interview">Interview</option>
+    <option value="rejected">Abgesagt</option>
+    <option value="accepted">Zusage</option>
+    </select>
+    <br/><br/>
+    <button type ="submit" >Hinzufügen</button>
+    </form>
+  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {application.status} </li>)}</ul>
   </div>
 )
 }
