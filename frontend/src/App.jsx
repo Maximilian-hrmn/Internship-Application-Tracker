@@ -2,11 +2,7 @@ import './App.css'
 import {useState} from 'react'
 
 function App() {
-  const [applications, setApplications] = useState([ 
-  {id: 1, company: "Apple", position: "Vollzeit", status:"applied"},
-  {id: 2, company: "BMW", position: "Teilzeit", status:"interview"},
-  {id: 3, company: "Microsoft", position: "Werkstudent", status:"rejected"}
-  ])
+  const [applications, setApplications] = useState([])
   const [company, setCompany] = useState("")
   const [position, setPosition] = useState("")
   const [status, setStatus] = useState("applied")
