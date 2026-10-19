@@ -13,10 +13,10 @@ function App() {
 
   function handleSubmit(event){
     event.preventDefault()
-    console.log(company)
-    console.log(position)
-    console.log(status)
-    
+    const id = Date.now()
+    const applicationObj = {id, company, position, status}
+    setApplications([...applications, applicationObj])
+    setCompany(""), setPosition(""), setStatus(applied)
   }
 
   return(
