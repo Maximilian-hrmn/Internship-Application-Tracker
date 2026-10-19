@@ -16,7 +16,7 @@ function App() {
     const id = Date.now()
     const applicationObj = {id, company, position, status}
     setApplications([...applications, applicationObj])
-    setCompany(""), setPosition(""), setStatus(applied)
+    setCompany(""), setPosition(""), setStatus("applied")
   }
 
   return(
