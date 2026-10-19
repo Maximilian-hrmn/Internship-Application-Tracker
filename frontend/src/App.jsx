@@ -19,6 +19,14 @@ function App() {
     setApplications(applications.filter( a => a.id !== id))
   }
 
+  //Nur damit das Ergebnis auch auf Deutsch ist, da der Code auf Englisch ist und die Website auf Deutsch
+  const statusLabels = {
+    applied : "Beworben",
+    interview : "Interview",
+    rejected : "Abgesagt",
+    accepted : "Zusage"
+  }
+
   return(
   <div>
   <h1>Internship Application Tracker</h1>
@@ -39,7 +47,7 @@ function App() {
     <br/><br/>
     <button type ="submit" >Hinzufügen</button>
     </form>
-  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {application.status}
+  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {statusLabels[application.status]}
     <button onClick={() => handleDelete(application.id)}>Löschen</button> </li>)}</ul>
   </div>
 )
