@@ -3,6 +3,7 @@ import {useState} from 'react'
 import Header from './components/Header.jsx'
 import ApplicationList from './components/ApplicationList.jsx'
 import ApplicationForm from './components/ApplicationForm.jsx'
+import {supabase} from './supabaseClient.js'
 
 function App() {
   const [applications, setApplications] = useState([])
