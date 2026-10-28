@@ -1,5 +1,6 @@
 import './App.css'
 import {useState} from 'react'
+import Header from './components/Header.jsx'
 
 function App() {
   const [applications, setApplications] = useState([])
@@ -29,7 +30,7 @@ function App() {
 
   return(
   <div>
-  <h1>Internship Application Tracker</h1>
+  <Header title = "Internship Application Tracker"/>
   <form onSubmit={handleSubmit}>
     <label htmlFor="company">Firma </label>
     <input type="text" id="company" required value={company} onChange = {event => setCompany(event.target.value)} />
