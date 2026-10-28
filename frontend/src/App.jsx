@@ -1,6 +1,7 @@
 import './App.css'
 import {useState} from 'react'
 import Header from './components/Header.jsx'
+import ApplicationList from './components/ApplicationList.jsx'
 
 function App() {
   const [applications, setApplications] = useState([])
@@ -48,8 +49,7 @@ function App() {
     <br/><br/>
     <button type ="submit" >Hinzufügen</button>
     </form>
-  <ul>{applications.map((application) => <li key = {application.id}> {application.company}, {application.position}, {statusLabels[application.status]}
-    <button onClick={() => handleDelete(application.id)}>Löschen</button> </li>)}</ul>
+    <ApplicationList applications={applications} statusLabels={statusLabels} onDelete={handleDelete}/>
   </div>
 )
 }
