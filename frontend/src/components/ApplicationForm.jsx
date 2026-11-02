@@ -7,8 +7,7 @@ function ApplicationForm ({onAdd}){
 
   function handleSubmit(submitEvent){
     submitEvent.preventDefault()
-    const id = Date.now()
-    const applicationObj = {id, company, position, status}
+    const applicationObj = {company, position, status}
     onAdd(applicationObj)
     setCompany(""), setPosition(""), setStatus("applied")
     }
