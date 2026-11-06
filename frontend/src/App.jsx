@@ -83,7 +83,7 @@ function App() {
   return(
   <div>
   <Header title = "Internship Application Tracker"/>
-  <button type="submit" onClick={handleLogOut}>Logout</button>
+  <button className = "LogoutButton" onClick={handleLogOut}>Logout</button>
   <ApplicationForm onAdd={handleAdd}/>
   <ApplicationList applications={applications} statusLabels={statusLabels} onDelete={handleDelete}/>
   </div>

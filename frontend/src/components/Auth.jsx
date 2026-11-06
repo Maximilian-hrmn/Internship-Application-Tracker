@@ -16,12 +16,11 @@ function Auth(){
 
     async function handleLogin(submitEvent){
         submitEvent.preventDefault()
-        const {data, error} = await supabase.auth.signInWithPassword({ email, password })
+        const {error} = await supabase.auth.signInWithPassword({ email, password })
         if (error) {
             console.log(error)
             return
         }
-        console.log(data)
     }
     
     return(
