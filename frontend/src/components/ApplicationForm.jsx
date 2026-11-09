@@ -4,12 +4,14 @@ function ApplicationForm ({onAdd}){
     const [company, setCompany] = useState("")
     const [position, setPosition] = useState("")
     const [status, setStatus] = useState("applied")
+    const [deadline, setDeadline] = useState("")
+
 
   function handleSubmit(submitEvent){
     submitEvent.preventDefault()
-    const applicationObj = {company, position, status}
+    const applicationObj = {company, position, status, deadline: deadline || null }
     onAdd(applicationObj)
-    setCompany(""), setPosition(""), setStatus("applied")
+    setCompany(""), setPosition(""), setStatus("applied"), setDeadline("")
     }
     
     return(
@@ -27,6 +29,9 @@ function ApplicationForm ({onAdd}){
     <option value="rejected">Abgesagt</option>
     <option value="accepted">Zusage</option>
     </select>
+    <br/><br/>
+    <label htmlFor="Deadline">Datum </label>
+    <input type="date" id="deadline" value={deadline} onChange = {event => setDeadline(event.target.value)}></input>
     <br/><br/>
     <button type ="submit" >Hinzufügen</button>
     </form>
