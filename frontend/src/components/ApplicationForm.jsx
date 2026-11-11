@@ -30,8 +30,8 @@ function ApplicationForm ({onAdd}){
     <option value="accepted">Zusage</option>
     </select>
     <br/><br/>
-    <label htmlFor="Deadline">Datum </label>
-    <input type="date" id="deadline" value={deadline} onChange = {event => setDeadline(event.target.value)}></input>
+    <label htmlFor="deadline">Datum </label>
+    <input type="date" id="deadline" value={deadline} onChange = {event => setDeadline(event.target.value)}/>
     <br/><br/>
     <button type ="submit" >Hinzufügen</button>
     </form>
