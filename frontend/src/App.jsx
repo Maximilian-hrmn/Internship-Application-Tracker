@@ -67,6 +67,15 @@ function App() {
     console.log(data)
   }
 
+  async function handleStatusChange(id, newStatus){
+    const {data, error} = await supabase.from("applications").update({status: newStatus}).eq("id", id).select()
+    if (error) {
+    console.log(error)
+    return
+    }
+    setApplications(applications.map(a => a.id === id ? data[0] : a)) 
+  }
+
 
   //Nur damit das Ergebnis auch auf Deutsch ist, da der Code auf Englisch ist und die Website auf Deutsch
   const statusLabels = {
@@ -85,7 +94,7 @@ function App() {
   <Header title = "Internship Application Tracker"/>
   <button className = "LogoutButton" onClick={handleLogOut}>Logout</button>
   <ApplicationForm onAdd={handleAdd}/>
-  <ApplicationList applications={applications} statusLabels={statusLabels} onDelete={handleDelete}/>
+  <ApplicationList applications={applications} statusLabels={statusLabels} onDelete={handleDelete} onStatusChange={handleStatusChange}/>
   </div>
 )
 }
