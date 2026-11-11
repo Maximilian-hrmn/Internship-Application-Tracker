@@ -1,7 +1,7 @@
 function ApplicationList ({applications, statusLabels, onDelete}){
     return(
         <ul>{applications.map((application) => <li key = {application.id}> {application.company},
-        {application.position}, {statusLabels[application.status]} {application.deadline && <span>, Deadline: {application.deadline}</span>}
+        {application.position}, {statusLabels[application.status]} {application.deadline && <span>, Deadline: {new Date(application.deadline).toLocaleDateString("de-DE")}</span>}
         <button onClick={() => onDelete(application.id)}>Löschen</button> </li>)}</ul>
     )
 }
