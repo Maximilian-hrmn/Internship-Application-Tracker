@@ -13,6 +13,12 @@ function ApplicationList ({applications, statusLabels, onDelete, onStatusChange}
         <option value="rejected">{statusLabels.rejected}</option> 
         <option value="accepted">{statusLabels.accepted}</option> 
         </select>}
+        <ul>{application.contacts.map((contact) => <li key ={contact.id}>
+            {contact.name},
+            {contact.role},
+            {contact.email}
+            </li>)
+        }</ul>
         <button onClick={() => onDelete(application.id)}>Löschen</button> </li>)}</ul>
     )
 }

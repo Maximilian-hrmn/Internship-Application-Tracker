@@ -26,7 +26,7 @@ function App() {
     return
 }
   async function loadApplications(){
-    const {data, error} = await supabase.from("applications").select()
+    const {data, error} = await supabase.from("applications").select("*, contacts(*)")
     if (error) {
       console.log(error)
       return
@@ -48,7 +48,7 @@ function App() {
 
 
   async function handleAdd(application){
-    const {data, error} = await supabase.from("applications").insert(application).select()
+    const {data, error} = await supabase.from("applications").insert(application).select("*, contacts(*)")
     if (error) {
         console.log(error)
         return
@@ -68,7 +68,7 @@ function App() {
   }
 
   async function handleStatusChange(id, newStatus){
-    const {data, error} = await supabase.from("applications").update({status: newStatus}).eq("id", id).select()
+    const {data, error} = await supabase.from("applications").update({status: newStatus}).eq("id", id).select("*, contacts(*)")
     if (error) {
     console.log(error)
     return
