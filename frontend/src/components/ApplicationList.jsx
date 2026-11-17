@@ -1,4 +1,6 @@
-function ApplicationList ({applications, statusLabels, onDelete, onStatusChange}){
+import ContactForm from './ContactForm.jsx'
+
+function ApplicationList ({applications, statusLabels, onDelete, onStatusChange, onAddContact}){
     return(
         <ul>{applications.map((application) => <li key = 
         {application.id}> 
@@ -19,6 +21,7 @@ function ApplicationList ({applications, statusLabels, onDelete, onStatusChange}
             {contact.email}
             </li>)
         }</ul>
+        <ContactForm applicationId={application.id} onAddContact={onAddContact}/>
         <button onClick={() => onDelete(application.id)}>Löschen</button> </li>)}</ul>
     )
 }
