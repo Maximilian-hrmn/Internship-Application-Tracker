@@ -1,6 +1,6 @@
 import ContactForm from './ContactForm.jsx'
 
-function ApplicationList ({applications, statusLabels, onDelete, onStatusChange, onAddContact}){
+function ApplicationList ({applications, statusLabels, onDelete, onStatusChange, onAddContact, onDeleteContact}){
     return(
         <ul>{applications.map((application) => <li key = 
         {application.id}> 
@@ -16,13 +16,14 @@ function ApplicationList ({applications, statusLabels, onDelete, onStatusChange,
         <option value="accepted">{statusLabels.accepted}</option> 
         </select>}
         <ul>{application.contacts.map((contact) => <li key ={contact.id}>
-            {contact.name},
-            {contact.role},
-            {contact.email}
-            </li>)
-        }</ul>
+            {contact.name}
+            {contact.role  && <span>, Rolle: {contact.role} </span>}
+            {contact.email  && <span>, E-mail: {contact.email} </span>}
+            <button onClick={() => onDeleteContact(contact.id)}> Kontakt Löschen</button>
+            </li>)  }
+        </ul>
         <ContactForm applicationId={application.id} onAddContact={onAddContact}/>
-        <button onClick={() => onDelete(application.id)}>Löschen</button> </li>)}</ul>
+        <button onClick={() => onDelete(application.id)}> Löschen</button> </li>)}</ul>
     )
 }
 

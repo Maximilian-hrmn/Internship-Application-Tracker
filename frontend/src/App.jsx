@@ -43,7 +43,7 @@ function App() {
         console.log(error)
         return
       }
-      setApplications(applications.filter(a => a.id !== id))
+      setApplications(applications.filter(application => application.id !== id))
   }
 
 
@@ -73,7 +73,7 @@ function App() {
     console.log(error)
     return
     }
-    setApplications(applications.map(a => a.id === id ? data[0] : a)) 
+    setApplications(applications.map(application => application.id === id ? data[0] : application)) 
   }
 
     async function handleAddContact(contact){
@@ -82,11 +82,21 @@ function App() {
         console.log(error)
         return
       }
-    setApplications(applications.map(a =>
-      a.id === data[0].application_id ? { ...a, contacts: [...a.contacts, data[0]] } : a)
+    setApplications(applications.map(application =>
+      application.id === data[0].application_id ? { ...application, contacts: [...application.contacts, data[0]] } : application)
     )    
-}
+  }
 
+  async function handleDeleteContact(contactId){
+        const {error} = await supabase.from("contacts").delete().eq("id", contactId)
+        if (error) {
+        console.log(error)
+        return
+      }
+      setApplications(applications.map(application => ({...application,
+      contacts: application.contacts.filter(contact => contact.id !== contactId)}))
+    )
+  }
 
   //Nur damit das Ergebnis auch auf Deutsch ist, da der Code auf Englisch ist und die Website auf Deutsch
   const statusLabels = {
@@ -105,7 +115,9 @@ function App() {
   <Header title = "Internship Application Tracker"/>
   <button className = "LogoutButton" onClick={handleLogOut}>Logout</button>
   <ApplicationForm onAdd={handleAdd}/>
-  <ApplicationList applications={applications} statusLabels={statusLabels} onDelete={handleDelete} onStatusChange={handleStatusChange} onAddContact={handleAddContact}/>
+  <ApplicationList 
+  applications={applications} statusLabels={statusLabels} onDelete={handleDelete} onStatusChange={handleStatusChange} 
+  onAddContact={handleAddContact} onDeleteContact={handleDeleteContact}/>
   </div>
 )
 }
