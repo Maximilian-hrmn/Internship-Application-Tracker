@@ -1,6 +1,8 @@
 import ContactForm from './ContactForm.jsx'
+import InterviewForm from './InterviewForm.jsx'
 
-function ApplicationList ({applications, statusLabels, onDelete, onStatusChange, onAddContact, onDeleteContact}){
+function ApplicationList ({applications, statusLabels, onDelete, onStatusChange, onAddContact, onDeleteContact, onAddInterview,
+     onDeleteInterview }){
     return(
         <ul>{applications.map((application) => <li key = 
         {application.id}> 
@@ -23,6 +25,14 @@ function ApplicationList ({applications, statusLabels, onDelete, onStatusChange,
             </li>)  }
         </ul>
         <ContactForm applicationId={application.id} onAddContact={onAddContact}/>
+        <ul>{application.interviews.map((interview) => <li key ={interview.id}>
+            {interview.date && <span>, Date: {new Date(interview.date).toLocaleDateString("de-DE")}</span>}
+            {interview.type  && <span>, Type: {interview.type} </span>}
+            {interview.notes  && <span>, Notizen: {interview.notes} </span>}
+            <button onClick={() => onDeleteInterview(interview.id)}> Interviewrunde Löschen</button>
+            </li>)  }
+        </ul>
+        <InterviewForm applicationId={application.id} onAddInterview={onAddInterview}/>
         <button onClick={() => onDelete(application.id)}> Löschen</button> </li>)}</ul>
     )
 }
