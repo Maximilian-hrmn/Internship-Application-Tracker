@@ -33,12 +33,12 @@ function ApplicationList ({applications, statusLabels, onDelete, onStatusChange,
             {interview.date && <span>, Date: {new Date(interview.date).toLocaleDateString("de-DE")}</span>}
             {interview.type  && <span>, Type: {interview.type} </span>}
             {interview.notes  && <span>, Notizen: {interview.notes} </span>}
-            <button onClick={() => onDeleteInterview(interview.id)}> Interviewrunde Löschen</button>
+            <button onClick={() => onDeleteInterview(interview.id)}>Interviewrunde Löschen</button>
             </li>)  }
         </ul>
         <InterviewForm applicationId={application.id} onAddInterview={onAddInterview}/>
         <br></br>
-        <button onClick={() => onDelete(application.id)}> Löschen</button> </li>)}</ul>
+        <button onClick={() => onDelete(application.id)}>Löschen</button> </li>)}</ul>
     )
 }
 

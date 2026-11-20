@@ -14,11 +14,11 @@ function InterviewForm ({applicationId, onAddInterview}){
     
     return(
     <form className="form" onSubmit={handleSubmit}>
-    <label>Date </label>
+    <label>Datum </label>
     <input type="date" required value={date} onChange = {event => setDate(event.target.value)} />
-    <label>Type </label>
+    <label>Typ (optional):</label>
     <input type="text" value={type} onChange = {event => setType(event.target.value)}/>
-    <label>Notes </label>
+    <label>Notizen (optional):</label>
     <input type="text" value={notes} onChange = {event => setNotes(event.target.value)}/>
     <button type ="submit" >Interview Hinzufügen </button>
     </form>
