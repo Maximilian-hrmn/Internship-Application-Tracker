@@ -13,13 +13,11 @@ function ContactForm ({applicationId, onAddContact}){
     }
     
     return(
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
     <label>Name </label>
     <input type="text" required value={name} onChange = {event => setName(event.target.value)} />
-    <br/><br/>
     <label>Role </label>
     <input type="text" value={role} onChange = {event => setRole(event.target.value)}/>
-    <br/><br/>
     <label>Email </label>
     <input type="email" value={email} onChange = {event => setEmail(event.target.value)}/>
     <button type ="submit" >Kontakt Hinzufügen </button>

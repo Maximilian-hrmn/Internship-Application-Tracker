@@ -133,11 +133,11 @@ function App() {
   }
 
   return(
-  <div>
+  <div className="app">
   <Header title = "Internship Application Tracker"/>
   <button className = "LogoutButton" onClick={handleLogOut}>Logout</button>
   <ApplicationForm onAdd={handleAdd}/>
-  <ApplicationList 
+  <ApplicationList
   applications={applications} statusLabels={statusLabels} onDelete={handleDelete} onStatusChange={handleStatusChange} 
   onAddContact={handleAddContact} onDeleteContact={handleDeleteContact} onAddInterview={handleAddInterview} onDeleteInterview={handleDeleteInterview}/>
   </div>
